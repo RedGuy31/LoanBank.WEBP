@@ -67,3 +67,11 @@ btnScrollTo.addEventListener("click", function (e) {
   //modern Brmow
   section1.scrollIntoView({ behavior: "smooth" });
 });
+
+const h1 = document.querySelector("h1");
+const alertH1 = function (e) {
+  alert("This Web if for practice...");
+  h1.removeEventListener("mouseenter", alertH1);
+};
+
+h1.addEventListener("mouseenter", alertH1);
