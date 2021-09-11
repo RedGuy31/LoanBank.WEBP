@@ -52,26 +52,36 @@ const logo = document.querySelector(".nav__logo");
 const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
 
-btnScrollTo.addEventListener("click", function (e) {
-  const s1coords = section1.getBoundingClientRect();
-  //   window.scrollTo(
-  //     s1coords.left + window.pageXOffset,
-  //     s1coords.top + window.pageYOffset
-  //   );
-  //old Brows
-  //   window.scrollTo({
-  //     left: s1coords.left + window.pageXOffset,
-  //     top: s1coords.top + window.pageYOffset,
-  //     behavior: "smooth",
-  //   });
-  //modern Brmow
-  section1.scrollIntoView({ behavior: "smooth" });
+// btnScrollTo.addEventListener("click", function (e) {
+//   const s1coords = section1.getBoundingClientRect();
+//   //   //   window.scrollTo(
+//   //   //     s1coords.left + window.pageXOffset,
+//   //   //     s1coords.top + window.pageYOffset
+//   //   //   );
+//   //   //old Brows
+//   //   //   window.scrollTo({
+//   //   //     left: s1coords.left + window.pageXOffset,
+//   //   //     top: s1coords.top + window.pageYOffset,
+//   //   //     behavior: "smooth",
+//   //   //   });
+//   //   //modern Brmow
+// section1.scrollIntoView({ behavior: "smooth" });
+// });
+
+// document.querySelectorAll(".nav__link").forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     const id = e.getAttribute("href");
+//     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+//   });
+// });
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({
+      behavior: "smooth",
+    });
+  }
 });
-
-const h1 = document.querySelector("h1");
-const alertH1 = function (e) {
-  alert("This Web if for practice...");
-  h1.removeEventListener("mouseenter", alertH1);
-};
-
-h1.addEventListener("mouseenter", alertH1);
