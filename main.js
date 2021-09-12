@@ -45,8 +45,6 @@ message.style.width = "120%";
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px";
 
-document.documentElement.style.setProperty("--color-primary", "orangered");
-
 const logo = document.querySelector(".nav__logo");
 
 const btnScrollTo = document.querySelector(".btn--scroll-to");
@@ -76,6 +74,7 @@ const section1 = document.querySelector("#section--1");
 //   });
 // });
 
+// Matching STR
 document.querySelector(".nav__links").addEventListener("click", function (e) {
   e.preventDefault();
   if (e.target.classList.contains("nav__link")) {
@@ -84,4 +83,23 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
       behavior: "smooth",
     });
   }
+});
+
+// Tabs
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+tabsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".operations__tab");
+
+  if (!clicked) return;
+  tabs.forEach((t) => t.classList.remove("operations__tab--active"));
+  tabsContent.forEach((c) => c.classList.remove("operations__content--active"));
+
+  clicked.classList.add("operations__tab--active");
+
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add("operations__content--active");
 });
