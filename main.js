@@ -184,7 +184,7 @@ const sectionObserer = new IntersectionObserver(revealSection, {
 
 allSections.forEach(function (section) {
   sectionObserer.observe(section);
-  section.classList.add("section--hidden");
+  // section.classList.add("section--hidden");
 });
 
 // img lazy loading
@@ -210,3 +210,8 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach((img) => imgObserver.observe(img));
+
+//  IMG Slider
+const slides = document.querySelectorAll(".slide");
+
+slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
