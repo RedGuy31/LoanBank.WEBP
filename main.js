@@ -252,3 +252,22 @@ const prevSlide = function () {
 
 btnRight.addEventListener("click", nextSlide);
 btnLeft.addEventListener("click", prevSlide);
+
+document.addEventListener("keydown", function (e) {
+  e.preventDefault();
+  if (e.key === "ArrowLeft") prevSlide();
+  e.key === "ArrowRight" && nextSlide();
+});
+
+const dotContainer = document.querySelector(".dots");
+
+const createDots = function () {
+  slides.forEach(function (_, i) {
+    dotContainer.insertAdjacentHTML(
+      "beforeend",
+      `<button class="dots__dot" 
+    data-slide="${i}"></button>`
+    );
+  });
+};
+createDots();
